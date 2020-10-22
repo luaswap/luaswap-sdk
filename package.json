@@ -1,16 +1,16 @@
 {
-  "name": "@uniswap/sdk",
+  "name": "@luaswap/sdk",
   "license": "MIT",
-  "version": "3.0.3",
-  "description": "🛠 An SDK for building applications on top of Uniswap.",
+  "version": "1.0.0",
+  "description": "🛠 An SDK for building applications on top of LuaSwap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/Uniswap/uniswap-sdk.git",
+  "repository": "https://github.com/tomochain/luaswap-sdk.git",
   "keywords": [
-    "uniswap",
+    "luaswap",
     "ethereum"
   ],
   "module": "dist/sdk.esm.js",
