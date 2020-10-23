@@ -26,7 +26,7 @@ export enum Rounding {
 export const FACTORY_ADDRESS = '0x0160835743D9bbd788321dfEff9f58F231677d6A'
 
 // TODO: Need to change every code smartcontract updated
-export const INIT_CODE_HASH = '0x90c2920fa631082d3579ec613a0093e74e90cfb7d734046d61691154681e034e'
+export const INIT_CODE_HASH = '0x9f9adac37d9ef16a50e45590df90a88787b345fdf6acdc7859b156d99e0dd7dd'
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
 
