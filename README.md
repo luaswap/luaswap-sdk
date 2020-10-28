@@ -2,7 +2,7 @@
 
 In-depth documentation on this SDK is available at [uniswap.org](https://uniswap.org/docs/v2/SDK/getting-started/).
 
-This modifies uniswap-sdk's UniswapV2Factory address. The new address for LuaSwap is  `0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac`.
+This modifies uniswap-sdk's UniswapV2Factory address. The new address for LuaSwap is  `0x0388C1E0f210AbAe597B7DE712B9510C6C36C857`.
 
 ## Running tests
 
@@ -35,7 +35,7 @@ yarn test
 You should see output like the following:
 
 ```sh
-yarn run v1.22.4
+yarn run v1.3.0
 $ tsdx test
  PASS  test/constants.test.ts
  PASS  test/pair.test.ts

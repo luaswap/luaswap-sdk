@@ -23,10 +23,10 @@ export enum Rounding {
 }
 
 // TODO: Need to change to luaswap's factory address
-export const FACTORY_ADDRESS = '0x0160835743D9bbd788321dfEff9f58F231677d6A'
+export const FACTORY_ADDRESS = '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857'
 
 // TODO: Need to change every code smartcontract updated
-export const INIT_CODE_HASH = '0xdf70f6d677ef360edfdbfd43c23c44ff86b32cadf88faa44e2429b8f0e8924d7'
+export const INIT_CODE_HASH = '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab'
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
 
