@@ -8,7 +8,11 @@ import { getCreate2Address } from '@ethersproject/address'
 import {
   BigintIsh,
   FACTORY_ADDRESS,
+  FACTORY_ADDRESS_UNISWAP,
+  FACTORY_ADDRESS_SUSHISWAP,
   INIT_CODE_HASH,
+  INIT_CODE_HASH_UNISWAP,
+  INIT_CODE_HASH_SUSHISWAP,
   MINIMUM_LIQUIDITY,
   ZERO,
   ONE,
@@ -27,18 +31,41 @@ export class Pair {
   public readonly liquidityToken: Token
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
 
-  public static getAddress(tokenA: Token, tokenB: Token): string {
+  public static getAddress(tokenA: Token, tokenB: Token, protocol = 'luaswap'): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+    let factoryAddressByProtocol, initCodeHashByProtocol
+        
+    switch (protocol) {
+      case 'uniswap':
+        factoryAddressByProtocol = FACTORY_ADDRESS_UNISWAP
+        initCodeHashByProtocol = INIT_CODE_HASH_UNISWAP
+        break
+      case 'sushiswap':
+        factoryAddressByProtocol = FACTORY_ADDRESS_SUSHISWAP
+        initCodeHashByProtocol = INIT_CODE_HASH_SUSHISWAP
+        break
+      default:
+        factoryAddressByProtocol = FACTORY_ADDRESS
+        initCodeHashByProtocol = INIT_CODE_HASH
+        break
+    }
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
+      console.log(protocol, factoryAddressByProtocol, initCodeHashByProtocol, '============================')
+      if (protocol === 'uniswap' && (tokens[0].symbol === 'LINK' || tokens[1].symbol === 'LINK')) console.log(getCreate2Address(
+        factoryAddressByProtocol,
+        keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
+        initCodeHashByProtocol
+      ))
+      
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
         [tokens[0].address]: {
           ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
           [tokens[1].address]: getCreate2Address(
-            FACTORY_ADDRESS,
+            factoryAddressByProtocol,
             keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-            INIT_CODE_HASH
+            initCodeHashByProtocol
           )
         }
       }
