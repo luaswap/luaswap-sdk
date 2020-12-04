@@ -30,6 +30,7 @@ let PAIR_ADDRESS_CACHE: { [token0Address: string]: { [token1Address: string]: st
 export class Pair {
   public readonly liquidityToken: Token
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
+  public protocol: string
 
   public static getAddress(tokenA: Token, tokenB: Token, protocol = 'luaswap'): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
@@ -50,13 +51,7 @@ export class Pair {
         break
     }
 
-    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
-      console.log(protocol, factoryAddressByProtocol, initCodeHashByProtocol, '============================')
-      if (protocol === 'uniswap' && (tokens[0].symbol === 'LINK' || tokens[1].symbol === 'LINK')) console.log(getCreate2Address(
-        factoryAddressByProtocol,
-        keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-        initCodeHashByProtocol
-      ))
+    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined || protocol !== 'luaswap') {
       
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
@@ -74,18 +69,19 @@ export class Pair {
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }
 
-  public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
+  public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount, protocol = 'luaswap') {
     const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
     this.liquidityToken = new Token(
       tokenAmounts[0].token.chainId,
-      Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
+      Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token, protocol),
       18,
       'UNI-V2',
       'Uniswap V2'
     )
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
+    this.protocol = protocol
   }
 
   /**
