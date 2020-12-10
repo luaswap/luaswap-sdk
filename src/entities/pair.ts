@@ -51,7 +51,7 @@ export class Pair {
         break
     }
 
-    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined || protocol !== 'luaswap') {
+    // if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
@@ -64,7 +64,7 @@ export class Pair {
           )
         }
       }
-    }
+    // }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }
