@@ -8,7 +8,9 @@ export {
   Rounding,
   FACTORY_ADDRESS,
   INIT_CODE_HASH,
-  MINIMUM_LIQUIDITY
+  TOMO_FACTORY_ADDRESS,
+  TOMO_INIT_CODE_HASH,
+  MINIMUM_LIQUIDITY,
 } from './constants'
 
 export * from './errors'

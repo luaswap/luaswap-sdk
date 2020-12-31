@@ -8,7 +8,10 @@ export enum ChainId {
   ROPSTEN = 3,
   RINKEBY = 4,
   GÖRLI = 5,
-  KOVAN = 42
+  KOVAN = 42,
+  TOMOCHAIN_DEVNET = 99,
+  TOMOCHAIN_TESTNET = 89,
+  TOMOCHAIN_MAINNET = 88
 }
 
 export enum TradeType {
@@ -27,6 +30,10 @@ export const FACTORY_ADDRESS = '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857'
 
 // TODO: Need to change every code smartcontract updated
 export const INIT_CODE_HASH = '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab'
+
+export const TOMO_FACTORY_ADDRESS = '0x1BA0DdCa35e152bE46e85e1EF9Db22d431dDc95e'
+
+export const TOMO_INIT_CODE_HASH = '0x2b9f535a55a8f0b77a1508fcfc2c2ed9d6ea509f3ea06d803782ad840328d61e'
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
 

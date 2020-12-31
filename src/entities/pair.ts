@@ -10,6 +10,8 @@ import {
   FACTORY_ADDRESS,
   INIT_CODE_HASH,
   MINIMUM_LIQUIDITY,
+  TOMO_FACTORY_ADDRESS,
+  TOMO_INIT_CODE_HASH,
   ZERO,
   ONE,
   FIVE,
@@ -30,19 +32,23 @@ export class Pair {
   public static getAddress(tokenA: Token, tokenB: Token): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
 
-    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
+    const factory_address = tokens[0].chainId === 89 ? TOMO_FACTORY_ADDRESS : FACTORY_ADDRESS
+
+    const init_code_hash = tokens[0].chainId === 89 ? TOMO_INIT_CODE_HASH : INIT_CODE_HASH
+
+    // if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
         [tokens[0].address]: {
           ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
           [tokens[1].address]: getCreate2Address(
-            FACTORY_ADDRESS,
+            factory_address,
             keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-            INIT_CODE_HASH
+            init_code_hash
           )
         }
       }
-    }
+    // }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }

@@ -79,5 +79,26 @@ export const WETH = {
     'Wrapped Ether'
   ),
   [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapped Ether'),
-  [ChainId.KOVAN]: new Token(ChainId.KOVAN, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether')
+  [ChainId.KOVAN]: new Token(ChainId.KOVAN, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether'),
+  [ChainId.TOMOCHAIN_DEVNET]: new Token(
+    ChainId.TOMOCHAIN_DEVNET,
+    '0xFdAA97661a584D977B4D3AbB5370766fF5b86A18',
+    18,
+    'WTOMO',
+    'Wrapped TOMO'
+  ),
+  [ChainId.TOMOCHAIN_TESTNET]: new Token(
+    ChainId.TOMOCHAIN_TESTNET,
+    '0xAB98e81e48AE4BD5e45411f387eEac675017Ae1A',
+    18,
+    'WTOMO',
+    'Wrapped TOMO'
+  ),
+  [ChainId.TOMOCHAIN_MAINNET]: new Token(
+    ChainId.TOMOCHAIN_MAINNET,
+    '0xAB98e81e48AE4BD5e45411f387eEac675017Ae1A',
+    18,
+    'WTOMO',
+    'Wrapped TOMO'
+  )
 }
