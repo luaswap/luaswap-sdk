@@ -60,8 +60,6 @@ export class Price extends Fraction {
   // performs floor division on overflow
   public quote(currencyAmount: CurrencyAmount): CurrencyAmount {
     invariant(currencyEquals(currencyAmount.currency, this.baseCurrency), 'TOKEN')
-    console.log('check sdk currency')
-    console.log(this.quoteCurrency)
     if (this.quoteCurrency instanceof Token) {
       return new TokenAmount(this.quoteCurrency, super.multiply(currencyAmount.raw).quotient)
     }
