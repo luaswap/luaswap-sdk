@@ -56,7 +56,7 @@ export class Pair {
   }
   // Add function check Tomochain network
   public static IsTomo(chainId: ChainId){
-    return chainId === 88
+    return chainId === 89 || chainId === 88 || chainId === 99
   }
 
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
