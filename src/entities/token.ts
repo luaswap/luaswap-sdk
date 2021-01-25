@@ -35,8 +35,11 @@ export class Token extends Currency {
    * @throws if the tokens are on different chains
    */
   public sortsBefore(other: Token): boolean {
+    console.log(this.chainId)
+    console.log(other.chainId)
     invariant(this.chainId === other.chainId, 'CHAIN_IDS')
     invariant(this.address !== other.address, 'ADDRESSES')
+    console.log(this.address.toLowerCase(),other.address.toLowerCase())
     return this.address.toLowerCase() < other.address.toLowerCase()
   }
 }
@@ -96,7 +99,7 @@ export const WETH = {
   ),
   [ChainId.TOMOCHAIN_MAINNET]: new Token(
     ChainId.TOMOCHAIN_MAINNET,
-    '0xAB98e81e48AE4BD5e45411f387eEac675017Ae1A',
+    '0xB1f66997A5760428D3a87D68b90BfE0aE64121cC',
     18,
     'WTOMO',
     'Wrapped TOMO'

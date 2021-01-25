@@ -37,7 +37,7 @@ export class Pair {
     const factory_address = IsTomo ? TOMO_FACTORY_ADDRESS : FACTORY_ADDRESS
 
     const init_code_hash = IsTomo ? TOMO_INIT_CODE_HASH : INIT_CODE_HASH
-
+    // console.log(IsTomo, factory_address,init_code_hash) 
     // if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
@@ -56,7 +56,7 @@ export class Pair {
   }
   // Add function check Tomochain network
   public static IsTomo(chainId: ChainId){
-    return chainId === 89 || chainId === 88 || chainId === 99
+    return chainId === 88
   }
 
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
