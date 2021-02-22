@@ -115,11 +115,11 @@ export class Trade {
   /**
    * The input amount for the trade assuming no slippage.
    */
-  public readonly inputAmount: CurrencyAmount
+  public inputAmount: CurrencyAmount
   /**
    * The output amount for the trade assuming no slippage.
    */
-  public readonly outputAmount: CurrencyAmount
+  public outputAmount: CurrencyAmount
   /**
    * The price expressed in terms of output amount/input amount.
    */
