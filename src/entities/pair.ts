@@ -32,11 +32,11 @@ export class Pair {
   public static getAddress(tokenA: Token, tokenB: Token): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
 
-    const IsTomo = Pair.IsTomo(tokens[0].chainId)
-    
+    const IsTomo = Pair.IsTomo(tokens[0].chainId)    
     const factory_address = IsTomo ? TOMO_FACTORY_ADDRESS : FACTORY_ADDRESS
 
     const init_code_hash = IsTomo ? TOMO_INIT_CODE_HASH : INIT_CODE_HASH
+    console.log(tokens[0].chainId, IsTomo, TOMO_FACTORY_ADDRESS, TOMO_INIT_CODE_HASH)
     // console.log(IsTomo, factory_address,init_code_hash) 
     // if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
