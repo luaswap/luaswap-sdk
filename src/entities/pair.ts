@@ -36,7 +36,7 @@ export class Pair {
 
     const init_code_hash = tokens[0].chainId === 89 ? TOMO_INIT_CODE_HASH : INIT_CODE_HASH
 
-    // if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
+    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
         [tokens[0].address]: {
@@ -48,7 +48,7 @@ export class Pair {
           )
         }
       }
-    // }
+    }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }
