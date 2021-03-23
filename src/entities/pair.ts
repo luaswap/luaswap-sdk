@@ -7,11 +7,11 @@ import { getCreate2Address } from '@ethersproject/address'
 
 import {
   BigintIsh,
-  FACTORY_ADDRESS,
-  INIT_CODE_HASH,
+  FACTORY_ADDRESS_C,
+  INIT_CODE_HASH_C,
   MINIMUM_LIQUIDITY,
-  TOMO_FACTORY_ADDRESS,
-  TOMO_INIT_CODE_HASH,
+  // TOMO_FACTORY_ADDRESS,
+  // TOMO_INIT_CODE_HASH,
   ZERO,
   ONE,
   FIVE,
@@ -32,9 +32,11 @@ export class Pair {
   public static getAddress(tokenA: Token, tokenB: Token): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
 
-    const factory_address = tokens[0].chainId === 89 ? TOMO_FACTORY_ADDRESS : FACTORY_ADDRESS
+    // const IsTomo = Pair.IsTomo(tokens[0].chainId)    
+    // const factory_address = IsTomo ? TOMO_FACTORY_ADDRESS : FACTORY_ADDRESS
+    const factory_address = FACTORY_ADDRESS_C[tokens[0].chainId]
 
-    const init_code_hash = tokens[0].chainId === 89 ? TOMO_INIT_CODE_HASH : INIT_CODE_HASH
+    const init_code_hash = INIT_CODE_HASH_C[tokens[0].chainId]
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
@@ -51,6 +53,10 @@ export class Pair {
     }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
+  }
+  // Add function check Tomochain network
+  public static IsTomo(chainId: ChainId){
+    return chainId === 89 || chainId === 88 || chainId === 99
   }
 
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {

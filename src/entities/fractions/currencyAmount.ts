@@ -1,5 +1,5 @@
 import { currencyEquals } from '../token'
-import { Currency, ETHER } from '../currency'
+import { Currency, ETHER, TOMO } from '../currency'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 import _Big from 'big.js'
@@ -20,6 +20,14 @@ export class CurrencyAmount extends Fraction {
    */
   public static ether(amount: BigintIsh): CurrencyAmount {
     return new CurrencyAmount(ETHER, amount)
+  }
+
+  /**
+   * Helper that calls the constructor with the TOMO currency
+   * @param amount tomo amount in wei
+   */
+  public static tomo(amount: BigintIsh): CurrencyAmount {
+    return new CurrencyAmount(TOMO, amount)
   }
 
   // amount _must_ be raw, i.e. in the native representation

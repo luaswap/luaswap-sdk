@@ -24,15 +24,34 @@ export enum Rounding {
   ROUND_HALF_UP,
   ROUND_UP
 }
-
+export const FACTORY_ADDRESS_C : { [chainId in ChainId]: string } = {
+  1: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+  3: '',
+  4: '',
+  5: '',
+  42: '',
+  88: '0x28c79368257CD71A122409330ad2bEBA7277a396',
+  89: '0x1BA0DdCa35e152bE46e85e1EF9Db22d431dDc95e',
+  99: ''
+}
+export const INIT_CODE_HASH_C : { [chainId in ChainId]: string } = {
+  1: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+  3: '',
+  4: '',
+  5: '',
+  42: '',
+  88: '0xdb97fca50f04565472504aea8301c967285be031e5bdd131140734c3759d7015',
+  89: '0x2b9f535a55a8f0b77a1508fcfc2c2ed9d6ea509f3ea06d803782ad840328d61e',
+  99: ''
+} 
 // TODO: Need to change to luaswap's factory address
 export const FACTORY_ADDRESS = '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857'
 
 // TODO: Need to change every code smartcontract updated
 export const INIT_CODE_HASH = '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab'
-
+// Tomo factory address mainet: 0x28c79368257CD71A122409330ad2bEBA7277a396
 export const TOMO_FACTORY_ADDRESS = '0x1BA0DdCa35e152bE46e85e1EF9Db22d431dDc95e'
-
+// Tomo init code mainet: 0xdb97fca50f04565472504aea8301c967285be031e5bdd131140734c3759d7015
 export const TOMO_INIT_CODE_HASH = '0x2b9f535a55a8f0b77a1508fcfc2c2ed9d6ea509f3ea06d803782ad840328d61e'
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
